@@ -11,6 +11,7 @@
     image: '', 
     notes: ''
   }
+  import { enhance } from '$app/forms'
 
   import Scenario from '$lib/components/Scenario.svelte'
   import Brief from '$lib/components/Brief.svelte'
@@ -19,11 +20,14 @@
   import Result from '$lib/components/Result.svelte'
   import Image from '$lib/components/Image.svelte'
   import Notes from '$lib/components/Notes.svelte'
+
+  export let form
 </script>
 
 <main>
   <h1>New Scenario</h1>
-  <form>
+  <form method="post" use:enhance|preventDefault enctype="multipart/form-data">
+    <input type="file" name="file" />
   <Scenario {scenario} />
   <Brief {scenario} />
   <Steps {scenario} />
